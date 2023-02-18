@@ -16,7 +16,7 @@ const Layout = ({children}) => {
             <div className={styles.container}>{ children }</div>
         
             <footer className={styles.footer}>
-                <a href="https://github.com/behrouz2115"  target="_blank" rel="noreferrer">GotHub: behrouz2115 &copy;</a>
+                <a href="https://github.com/behrouz2115"  target="_blank" rel="noreferrer">GitHub: behrouz2115 &copy;</a>
             </footer>
         </div>
 

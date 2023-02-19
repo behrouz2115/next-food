@@ -1,9 +1,8 @@
-import styles from './Atributes.module.css';
-
 import Choice from "../icons/Choice";
 import Clock from "../icons/Clock";
 import Fast from "../icons/Fast";
 import Food from "../icons/Food";
+import styles from "./Atributes.module.css";
 
 function Attributes() {
   return (

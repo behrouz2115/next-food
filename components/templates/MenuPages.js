@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../modules/Card';
 import styles from './MenuPages.module.css'
 
 const MenuPages = ({ data }) => {
@@ -8,7 +9,7 @@ const MenuPages = ({ data }) => {
             <h2>Menu</h2>
             <div className={styles.subContainer}>
                 {
-                    data.map(item => <p key={item.key}>{ item.name }</p>)
+                    data.map(item => <Card key={item.id} { ...item } />)
                 }
             </div>
         </div>

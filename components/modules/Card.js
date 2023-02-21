@@ -28,7 +28,7 @@ const Card = (foods) => {
         )}
         {discount ? <div className={styles.badge}>{discount}%</div> : null}
           </div>
-          <Link href='#'>See Details</Link>
+          <Link  href={`/menu/${id}`}>See Details</Link>
     </div>
   );
 };

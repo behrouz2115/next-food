@@ -5,7 +5,7 @@ import Location from "../icons/Location";
 import styles from "./Card.module.css";
 
 const Card = (foods) => {
-  const { id, name, details, price } = foods;
+  const { id, name, details, price,discount } = foods;
 
   return (
     <div className={styles.container}>
@@ -19,7 +19,14 @@ const Card = (foods) => {
       </div>
       <div className={styles.price}>
         <Dollar />
-        <span>{price}$</span>
+        {discount ? (
+          <span className={styles.discount}>
+            {(price * (100 - discount)) / 100}$
+          </span>
+        ) : (
+          <span>{price}$</span>
+        )}
+        {discount ? <div className={styles.badge}>{discount}%</div> : null}
           </div>
           <Link href='#'>See Details</Link>
     </div>

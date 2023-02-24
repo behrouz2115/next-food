@@ -3,6 +3,9 @@ import Dollar from "../icons/Dollar";
 import Location from "../icons/Location";
 
 const DetailsPage = (data) => {
+    const addToCart = () => {
+        alert('added in to card');
+    }
   const {
     id,
     name,
@@ -64,7 +67,7 @@ const DetailsPage = (data) => {
             </div>
           ))}
           </div>
-          <button>Add to cart</button>
+          <button onClick={addToCart}>Add to cart</button>
     </div>
   );
 };

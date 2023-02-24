@@ -1,3 +1,4 @@
+import DetailsPage from "@/components/templates/DetailsPage";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -7,7 +8,7 @@ const Details = ({ data }) => {
     if (router.isFallback) {
         return <h2>Loading ...</h2>
     }
-    return <div>Details</div>;
+    return <DetailsPage  {...data} />;
 
 };
 
@@ -54,7 +55,8 @@ export async function getStaticProps(context) {
   }
   return {
     props: {
-      data,
+          data,
+        params,
     },
     revalidate: 20,
   };

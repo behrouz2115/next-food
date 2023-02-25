@@ -1,11 +1,12 @@
 import React from "react";
 import Dollar from "../icons/Dollar";
 import Location from "../icons/Location";
+import styles from "./DetailsPage.module.css";
 
 const DetailsPage = (data) => {
-    const addToCart = () => {
-        alert('added in to card');
-    }
+  const addToCart = () => {
+    alert("added in to card");
+  };
   const {
     id,
     name,
@@ -17,10 +18,9 @@ const DetailsPage = (data) => {
     recipe,
   } = data;
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Details</h2>
-
-      <div>
+      <div className={styles.banner}>
         <img src={`/images/${id}.jpeg`} alt={name} />
         <div>
           <h3>{name}</h3>
@@ -30,14 +30,17 @@ const DetailsPage = (data) => {
           </span>
           <span>
             <Dollar />
-            <p>{price}</p>
+            {discount ? (price * (100 - discount)) / 100 : price}$
           </span>
+          {discount ? (
+            <span className={styles.discount}>{discount}% OFF</span>
+          ) : null}
         </div>
       </div>
-      <div>
+      <div className={styles.introduction}>
         <p>{introduction}</p>
       </div>
-      <div>
+      <div className={styles.details}>
         <h4>Details</h4>
         <ul>
           {details.map((detail, index) => (
@@ -47,27 +50,27 @@ const DetailsPage = (data) => {
             </li>
           ))}
         </ul>
-          </div>
-          <div >
-          <h4>Ingredients</h4>
-          <ul>
-            {ingredients.map((item, index) => (
-              <li key={index}>
-                <p>{item}</p>
-              </li>
-            ))}
-          </ul>
-          </div>
-          <div>
-          <h4>Recipe</h4>
-          {recipe.map((item, index) => (
-            <div key={index} >
-              <span>{index + 1}</span>
+      </div>
+      <div className={styles.details}>
+        <h4>Ingredients</h4>
+        <ul>
+          {ingredients.map((item, index) => (
+            <li key={index}>
               <p>{item}</p>
-            </div>
+            </li>
           ))}
+        </ul>
+      </div>
+          <div className={styles.recipe} >
+        <h4>Recipe</h4>
+        {recipe.map((item, index) => (
+          <div key={index}  className={index % 2 ? styles.odd : styles.even}>
+            <span>{index + 1}</span>
+            <p>{item}</p>
           </div>
-          <button onClick={addToCart}>Add to cart</button>
+        ))}
+      </div>
+      <button onClick={addToCart}>Add to cart</button>
     </div>
   );
 };

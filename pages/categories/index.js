@@ -14,9 +14,17 @@ export async function getServerSideProps(context) {
   const {
     query: { difficulty, time },
   } = context;
-  console.log(query);    
-const res = await fetch("https://my-server-pi.vercel.app/food-data");
-const data = await res.json();
+  console.log(context.query);
+  const res = await fetch("https://my-server-pi.vercel.app/food-data");
+    const data = await res.json();
+    
+    const filteredData = data.filter((food) => {
+      
+    food.details.filter((detail) => {
+      const defficultyResult =
+        detail.Difficulty & (detail.Difficulty === difficulty);
+    });
+  });
   return {
     props: {
       data,

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const CategoriesPage = () => {
   const router = useRouter();
-  const [query, setQuery] = useState({ difficulty: "", time: "" });
+  const [query, setQuery] = useState({ difficulty: " ", time: " " });
   const changeHandler = (e) => {
     setQuery({ ...query, [e.target.name]: e.target.value });
   };
@@ -15,6 +15,7 @@ const CategoriesPage = () => {
       query,
     });
   };
+    
   return (
     <div>
       <h2>Categories</h2>

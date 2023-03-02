@@ -1,10 +1,10 @@
 import CategoriesPage from "@/components/templates/CategoriesPage";
 
 const Categories = ({ data }) => {
-  console.log(data);
+//   console.log(data);
   return (
     <div>
-      <CategoriesPage />
+      <CategoriesPage data={data} />
     </div>
   );
 };

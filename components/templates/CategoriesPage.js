@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Card from "../modules/Card";
 
-const CategoriesPage = () => {
+const CategoriesPage = ({data}) => {
   const router = useRouter();
   const [query, setQuery] = useState({ difficulty: " ", time: " " });
   const changeHandler = (e) => {
@@ -41,7 +42,14 @@ const CategoriesPage = () => {
           </select>
           <button onClick={searchHandler}>Search</button>
         </div>
-      </div>
+          </div>
+          <div>
+              {
+                  data.map(food => (
+                      <Card key={food.id} {...food} />
+                  ))
+              }
+          </div>
     </div>
   );
 };

@@ -19,31 +19,27 @@ export async function getServerSideProps(context) {
   const res = await fetch("https://my-server-pi.vercel.app/food-data");
   const data = await res.json();
 
-  const filteredData = data.filter((food) => {
-    const difficultyResult = food.details.filter((detail) => 
-      detail.Difficulty && detail.Difficulty === difficulty
+      const filteredData = data.filter((food) => {
+    const difficultyResult = food.details.filter(
+      (detail) => detail?.Difficulty === difficulty
+        
     );
 
-    const timeResult = food.details.filter((detail) => {
-      const cookingTime = detail["Cooking Time"] || "";
-        const [timeDetail] = cookingTime.split(" ");
-        console.log(timeDetail);
-      if (time === "less" && timeDetail && +timeDetail <= 30) {
-        return detail;
-      } else if (time === "more" && +timeDetail > 30) {
-        return detail;
-      }
-    });
+      const timeResult = food.details.filter((detail) => {
+          const cookingTime = detail["Cooking Time"] || "";
+          const [timeDetail] = cookingTime.split(" ");
+          console.log(timeDetail);
+          return (
+              (time === "more" && +timeDetail > 30)||
+              (time === "less" && timeDetail && +timeDetail <= 30) 
+          )
+      })
 
-
-
-    if (time && difficulty && timeResult.length && difficultyResult.length) {
-      return food;
-    } else if (!time && difficulty && difficultyResult.length) {
-      return food;
-    } else if (time && !difficulty && timeResult.length) {
-      return food;
-    }
+    return (
+      (time && difficulty && timeResult.length && difficultyResult.length) ||
+      (!time && difficulty && difficultyResult.length) ||
+      (time && !difficulty && timeResult.length)
+    );
   });
 
   return {

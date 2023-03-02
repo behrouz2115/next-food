@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CategoriesPage = () => {
   const router = useRouter();
@@ -9,20 +9,19 @@ const CategoriesPage = () => {
   };
 
   const searchHandler = () => {
-    console.log(query);
     router.push({
       pathname: "/categories",
       query,
     });
   };
-    
+  console.log(router.query?.difficulty);
   return (
     <div>
       <h2>Categories</h2>
       <div>
         <div>
           <select
-            value={query.difficulty}
+            value={router?.query?.difficulty || ""}
             name="difficulty"
             onChange={changeHandler}
           >
@@ -31,7 +30,11 @@ const CategoriesPage = () => {
             <option value="Medium">Medium</option>
             <option value="Hard">Hard</option>
           </select>
-          <select value={query.time} name="time" onChange={changeHandler}>
+          <select
+            value={router?.query?.time || ""}
+            name="time"
+            onChange={changeHandler}
+          >
             <option value="">Cooking Time</option>
             <option value="more">More than 30 min</option>
             <option value="less">Less than 30 min</option>

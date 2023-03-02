@@ -15,7 +15,6 @@ const CategoriesPage = ({data}) => {
       query,
     });
   };
-  console.log(router.query?.difficulty);
   return (
     <div>
       <h2>Categories</h2>
@@ -44,6 +43,9 @@ const CategoriesPage = ({data}) => {
         </div>
           </div>
           <div>
+          {!data.length ? (
+            <img src="/images/search.png" alt="Category" />
+          ) : null}
               {
                   data.map(food => (
                       <Card key={food.id} {...food} />

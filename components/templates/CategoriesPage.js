@@ -9,12 +9,12 @@ const CategoriesPage = ({ data }) => {
   const changeHandler = (e) => {
     setQuery({ ...query, [e.target.name]: e.target.value });
   };
-  //   useEffect(() => {
-  //     const { difficulty, time } = router.query;
-  //     if (query.difficulty !== difficulty || query.time !== time) {
-  //       setQuery({ difficulty, time });
-  //     }
-  //   }, []);
+    useEffect(() => {
+      const { difficulty, time } = router.query;
+      if (query.difficulty !== difficulty || query.time !== time) {
+        setQuery({ difficulty, time });
+      }
+    }, []);
 
   const searchHandler = () => {
     router.push({
@@ -29,7 +29,7 @@ const CategoriesPage = ({ data }) => {
         <div className={styles.select}>
           <select
             // value={router?.query?.difficulty || ""}
-            value={(query.difficulty && router?.query?.difficulty) || ""}
+            value={query.difficulty}
             name="difficulty"
             onChange={changeHandler}
           >
@@ -40,7 +40,7 @@ const CategoriesPage = ({ data }) => {
           </select>
           <select
             // value={router?.query?.time || ""}
-            value={(query.time && router?.query?.time) || ""}
+            value={query.time}
             name="time"
             onChange={changeHandler}
           >

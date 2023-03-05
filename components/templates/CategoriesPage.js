@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../modules/Card";
 
 const CategoriesPage = ({data}) => {
@@ -8,6 +8,12 @@ const CategoriesPage = ({data}) => {
   const changeHandler = (e) => {
     setQuery({ ...query, [e.target.name]: e.target.value });
   };
+//   useEffect(() => {
+//     const { difficulty, time } = router.query;
+//     if (query.difficulty !== difficulty || query.time !== time) {
+//       setQuery({ difficulty, time });
+//     }
+//   }, []);
 
   const searchHandler = () => {
     router.push({
@@ -21,7 +27,8 @@ const CategoriesPage = ({data}) => {
       <div>
         <div>
           <select
-            value={router?.query?.difficulty || ""}
+            // value={router?.query?.difficulty || ""}
+            value={query.difficulty}
             name="difficulty"
             onChange={changeHandler}
           >
@@ -31,7 +38,8 @@ const CategoriesPage = ({data}) => {
             <option value="Hard">Hard</option>
           </select>
           <select
-            value={router?.query?.time || ""}
+            // value={router?.query?.time || ""}                    
+            value={query.time}
             name="time"
             onChange={changeHandler}
           >

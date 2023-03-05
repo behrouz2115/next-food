@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   const {
     query: { difficulty, time },
   } = context;
-  console.log(context.query);
+//   console.log(context.query);
   const res = await fetch("https://my-server-pi.vercel.app/food-data");
   const data = await res.json();
 
@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
       const timeResult = food.details.filter((detail) => {
           const cookingTime = detail["Cooking Time"] || "";
           const [timeDetail] = cookingTime.split(" ");
-          console.log(timeDetail);
+        //   console.log(timeDetail);
           return (
               (time === "more" && +timeDetail > 30)||
               (time === "less" && timeDetail && +timeDetail <= 30) 

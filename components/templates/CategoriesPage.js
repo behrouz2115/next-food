@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Card from "../modules/Card";
+import styles from './CategoriesPage.module.css';
 
 const CategoriesPage = ({ data }) => {
   const router = useRouter();
@@ -22,10 +23,10 @@ const CategoriesPage = ({ data }) => {
     });
   };
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Categories</h2>
-      <div>
-        <div>
+      <div >
+        <div className={styles.select}>
           <select
             // value={router?.query?.difficulty || ""}
             value={(query.difficulty && router?.query?.difficulty) || ""}
@@ -50,7 +51,7 @@ const CategoriesPage = ({ data }) => {
           <button onClick={searchHandler}>Search</button>
         </div>
       </div>
-      <div>
+      <div className={styles.cards}>
         {!data.length ? <img src="/images/search.png" alt="Category" /> : null}
         {data.map((food) => (
           <Card key={food.id} {...food} />
